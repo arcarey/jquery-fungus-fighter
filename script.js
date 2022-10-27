@@ -40,7 +40,7 @@ function onReady() {
     $('.dragon-blade').on('click', attackDragonBlade);
         //Star Fire
     $('.star-fire').on('click', attackStarFire);
-        // button disable
+        // button disable?
     $('.attack-btn').on('click', checkButton);
 
 }
