@@ -150,8 +150,14 @@ function renderDeath() {
     if (!fungusAlive){
         $('.freaky-fungus').removeClass('walk');
         $('.freaky-fungus').addClass('dead');
+        $('.attack-btn').prop('disabled', true);
+
     }
 }
 
 
 // render death
+
+
+
+// my button greying out doesn't happen until after the event is triggered... I think I need to move the button checking out into it's own click event
