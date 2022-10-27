@@ -40,7 +40,8 @@ function onReady() {
     $('.dragon-blade').on('click', attackDragonBlade);
         //Star Fire
     $('.star-fire').on('click', attackStarFire);
-
+        // button disable
+    $('.attack-btn').on('click', checkButton);
 
 }
 
@@ -60,9 +61,9 @@ function attackArcaneScepter() {
     renderAttackPoints();
     renderHitPoints();
     //disable button if there aren't enough attack points
-    if (attackPoints<=attackCost) {
-        $('.arcane-sceptre').prop('disabled', true);
-    }
+    // if (attackPoints<=attackCost) {
+    //     $('.arcane-sceptre').prop('disabled', true);
+    // }
 }
 function attackEntangle() {
     let attackCost = 23;
@@ -79,9 +80,9 @@ function attackEntangle() {
     renderAttackPoints();
     renderHitPoints();
     //disable button if there aren't enough attack points
-    if (attackPoints<=attackCost) {
-        $('.entangle').prop('disabled', true);
-    }
+    // if (attackPoints<=attackCost) {
+    //     $('.entangle').prop('disabled', true);
+    // }
 }
 
 function attackDragonBlade() {
@@ -100,9 +101,9 @@ function attackDragonBlade() {
     renderHitPoints();
 
     //disable button if there aren't enough attack points
-    if (attackPoints<=attackCost) {
-        $('.dragon-blade').prop('disabled', true);
-    }
+    // if (attackPoints<=attackCost) {
+    //     $('.dragon-blade').prop('disabled', true);
+    // }
 }
 function attackStarFire() {
     let attackCost = 33;
@@ -119,9 +120,9 @@ function attackStarFire() {
     renderAttackPoints();
     renderHitPoints();
     //disable button if there aren't enough attack points
-    if (attackPoints<=attackCost){
-        $('.star-fire').prop('disabled', true);
-    }
+    // if (attackPoints<=attackCost){
+    //     $('.star-fire').prop('disabled', true);
+    // }
 }
 
 function isItDead() {
@@ -137,12 +138,14 @@ function renderHitPoints(){
     $('.hp-text').html(`
     ${hitPoints} HP
     `);
+    $('#hp-meter').val(hitPoints);
 }
 
 function renderAttackPoints() {
     $('.ap-text').html(`
     ${attackPoints} AP
     `)
+    $('#ap-meter').val(attackPoints);
 }
 
 // render death to Dom
@@ -154,7 +157,29 @@ function renderDeath() {
 
     }
 }
+function checkButton() {
+    //scepter
+    if (attackPoints < 12){
+        $('.arcane-sceptre').prop('disabled', true);
 
+    }
+    //entangle
+    if (attackPoints < 23){
+        $('.entangle').prop('disabled', true);
+
+    }
+    //dragon blade
+    if (attackPoints < 38){
+        $('.dragon-blade').prop('disabled', true);
+
+    }
+    //star fire
+    if (attackPoints < 33){
+        $('.star-fire').prop('disabled', true);
+
+    }
+
+}
 
 
 
