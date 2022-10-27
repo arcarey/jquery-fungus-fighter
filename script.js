@@ -8,6 +8,8 @@ $(document).ready(onReady);
 // set up initial state
 let attackPoints = 100;
 let hitPoints = 100;
+let fungusAlive = true;
+let playerAlive = true;
 
 
 function onReady() {
@@ -46,40 +48,74 @@ function onReady() {
 function attackArcaneScepter() {
     let attackCost = 12;
     if(attackPoints>=attackCost){
-    attackPoints -= 12;
+    attackPoints -= attackCost;
     hitPoints -=14;
+    }
+    // HP cannot go below 0
+    if (hitPoints < 0) {
+        hitPoints = 0;
+    }
+    isItDead();
+    renderDeath();
     renderAttackPoints();
     renderHitPoints();
-    }
+    
 }
 function attackEntangle() {
     let attackCost = 23;
     if(attackPoints>=attackCost){
-    attackPoints -= 23;
+    attackPoints -= attackCost;
     hitPoints -=9;
+    }
+    // HP cannot go below 0
+    if (hitPoints < 0) {
+        hitPoints = 0;
+    }
+    isItDead();
+    renderDeath();
     renderAttackPoints();
     renderHitPoints();
-    }
 }
+
 function attackDragonBlade() {
     let attackCost = 38;
     if(attackPoints>=attackCost){
-    attackPoints -= 38;
+    attackPoints -= attackCost;
     hitPoints -=47;
+    }
+    // HP cannot go below 0
+    if (hitPoints < 0) {
+        hitPoints = 0;
+    }
+    isItDead();
+    renderDeath();
     renderAttackPoints();
     renderHitPoints();
-    }
+
 }
 function attackStarFire() {
     let attackCost = 33;
     if(attackPoints>=attackCost){
-    attackPoints -= 33;
+    attackPoints -= attackCost;
     hitPoints -=25;
+    }
+    // HP cannot go below 0
+    if (hitPoints < 0) {
+        hitPoints = 0;
+    }
+    isItDead();
+    renderDeath();
     renderAttackPoints();
     renderHitPoints();
-    }
+
 }
 
+function isItDead() {
+    if (hitPoints === 0) {
+        fungusAlive = false;
+    }
+
+}
 
 
 // render functions
@@ -94,3 +130,14 @@ function renderAttackPoints() {
     ${attackPoints} AP
     `)
 }
+
+// render death to Dom
+function renderDeath() {
+    if (!fungusAlive){
+        $('.freaky-fungus').removeClass('walk');
+        $('.freaky-fungus').addClass('dead');
+    }
+}
+
+
+// render death
