@@ -50,16 +50,19 @@ function attackArcaneScepter() {
     if(attackPoints>=attackCost){
     attackPoints -= attackCost;
     hitPoints -=14;
-    }
+    } 
     // HP cannot go below 0
     if (hitPoints < 0) {
         hitPoints = 0;
-    }
+    } 
     isItDead();
     renderDeath();
     renderAttackPoints();
     renderHitPoints();
-    
+    //disable button if there aren't enough attack points
+    if (attackPoints<=attackCost) {
+        $('.arcane-sceptre').prop('disabled', true);
+    }
 }
 function attackEntangle() {
     let attackCost = 23;
@@ -75,6 +78,10 @@ function attackEntangle() {
     renderDeath();
     renderAttackPoints();
     renderHitPoints();
+    //disable button if there aren't enough attack points
+    if (attackPoints<=attackCost) {
+        $('.entangle').prop('disabled', true);
+    }
 }
 
 function attackDragonBlade() {
@@ -92,6 +99,10 @@ function attackDragonBlade() {
     renderAttackPoints();
     renderHitPoints();
 
+    //disable button if there aren't enough attack points
+    if (attackPoints<=attackCost) {
+        $('.dragon-blade').prop('disabled', true);
+    }
 }
 function attackStarFire() {
     let attackCost = 33;
@@ -107,7 +118,10 @@ function attackStarFire() {
     renderDeath();
     renderAttackPoints();
     renderHitPoints();
-
+    //disable button if there aren't enough attack points
+    if (attackPoints<=attackCost){
+        $('.star-fire').prop('disabled', true);
+    }
 }
 
 function isItDead() {
