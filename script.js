@@ -156,8 +156,8 @@ function renderDeath() {
 }
 
 
-// render death
 
 
 
-// my button greying out doesn't happen until after the event is triggered... I think I need to move the button checking out into it's own click event
+// my button greying out only happens whithin the event of each specific button being pushed. so if I run out of APs it won't grey out a button until I try pushing it
+// I think I need to move the button checking out into it's own click event
